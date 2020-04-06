@@ -52,6 +52,16 @@ const makeExtinct = function(dino){
   dinoCopy.extinct = true
   return dinoCopy
 }
+const noExtinct = function(dino){
+  const dinoCopy = {
+    species: dino.species,
+    period: dino.period,
+    carnivore: dino.carnivore,
+    extinct: dino.extinct,
+  }
+  return dinoCopy.extinct === false
+  
+}
 
 const isCarnivore = function(dino){
   const dinoCopy = {
@@ -62,6 +72,17 @@ const isCarnivore = function(dino){
   }
   
   return dinoCopy.carnivore === true
+}
+
+const isHerbavore = function(dino){
+  const dinoCopy = {
+    species: dino.species,
+    period: dino.period,
+    carnivore: dino.carnivore,
+    extinct: dino.extinct,
+  }
+  
+  return dinoCopy.carnivore === false
 }
 
 const isExtinct = function(dino){
@@ -154,6 +175,33 @@ const isInPeriodOrder = function (name1, name2) {
     return 0
   }
 }
+
+const singularizeDinos = function(dinos){
+  return dinos.map(makeSingular)
+}
+const truncateDinos = function(dinos){
+  return dinos.map(truncateSpecies)
+}
+
+const makeAllExtinct = function(dinos){
+  return dinos.map(makeExtinct)
+}
+
+const carnivoresOnly = function(dinos){
+  return dinos.filter(isCarnivore)
+}
+
+const herbivoresOnly = function(dinos){
+  return dinos.filter(isHerbavore)
+}
+const extinctOnly = function(dinos){
+  return dinos.filter(isExtinct)
+}
+
+const notExtinct = function(dinos){
+  return dinos.filter(noExtinct)
+}
+
 
 
 
