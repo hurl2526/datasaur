@@ -1,6 +1,163 @@
 /********************
  * HELPER FUNCTIONS *
  ********************/
+const makeDino = function(species,period,carnivore,extinct = false){
+  const dino = {
+    species: species,
+    period: period,
+    carnivore: carnivore,
+    extinct: extinct,
+  };
+
+  return dino;
+}
+
+const makeSingular = function(dino){
+  const dinoCopy = {
+    species: dino.species,
+    period: dino.period,
+    carnivore: dino.carnivore,
+    extinct: dino.extinct,
+  }
+  if (dinoCopy.species.endsWith('us')){
+    dinoCopy.species = dinoCopy.species.slice(0,dinoCopy.species.length - 2)
+    }else {
+  dinoCopy.species = dinoCopy.species
+    }
+  return dinoCopy
+}
+
+const truncateSpecies = function(dino){
+  const dinoCopy = {
+    species: dino.species,
+    period: dino.period,
+    carnivore: dino.carnivore,
+    extinct: dino.extinct,
+  }
+  if (dinoCopy.species.length > 10 ){
+    dinoCopy.species = dinoCopy.species.slice(0,7) + "..."
+    }else {
+  dinoCopy.species = dinoCopy.species
+    }
+  return dinoCopy
+}
+
+const makeExtinct = function(dino){
+  const dinoCopy = {
+    species: dino.species,
+    period: dino.period,
+    carnivore: dino.carnivore,
+    extinct: dino.extinct,
+  }
+  dinoCopy.extinct = true
+  return dinoCopy
+}
+
+const isCarnivore = function(dino){
+  const dinoCopy = {
+    species: dino.species,
+    period: dino.period,
+    carnivore: dino.carnivore,
+    extinct: dino.extinct,
+  }
+  
+  return dinoCopy.carnivore === true
+}
+
+const isExtinct = function(dino){
+  const dinoCopy = {
+    species: dino.species,
+    period: dino.period,
+    carnivore: dino.carnivore,
+    extinct: dino.extinct,
+  }
+  
+  return dinoCopy.extinct === true
+}
+
+const isTriassic = function(dino){
+  const dinoCopy = {
+    species: dino.species,
+    period: dino.period,
+    carnivore: dino.carnivore,
+    extinct: dino.extinct,
+  }
+  
+  return dinoCopy.period === 'Triassic'
+}
+
+const isJurassic = function(dino){
+  const dinoCopy = {
+    species: dino.species,
+    period: dino.period,
+    carnivore: dino.carnivore,
+    extinct: dino.extinct,
+  }
+  
+  return dinoCopy.period === 'Jurassic'
+}
+
+const isCretaceous = function(dino){
+  const dinoCopy = {
+    species: dino.species,
+    period: dino.period,
+    carnivore: dino.carnivore,
+    extinct: dino.extinct,
+  }
+  
+  return dinoCopy.period === 'Cretaceous'
+}
+
+const isFirstAlphabeticallyBySpecies = function (name1, name2) {
+  if (name1.species > name2.species) {
+    return 1;
+  } else if (name1.species < name2.species) {
+    return -1;
+  } else {
+    return 0;
+  }
+};
+
+const extinctIsLast = function (name1, name2) {
+  if (name1.extinct > name2.extinct) {
+    return 1;
+  } else if (name1.extinct < name2.extinct) {
+    return -1;
+  } else {
+    return 0;
+  }
+};
+
+const carnivoreIsFirst = function (name1, name2) {
+  if (name1.carnivore > name2.carnivore) {
+    return -1;
+  } else if (name1.carnivore < name2.carnivore) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+const isInPeriodOrder = function (name1, name2) {
+  if (name1.period === 'Jurassic' && name2.period === 'Triassic') {
+    return 1;
+  } else if (name1.period === 'Cretaceous' && name2.period === 'Triassic') {
+    return 1;
+  } else if (name1.period === 'Cretaceous' && name2.period === 'Jurassic'){
+    return 1;
+  }else if (name1.period === 'Jurassic' && name2.period === 'Cretaceous') {
+    return -1;
+  }else if (name1.period === 'Triassic' && name2.period === 'Cretaceous') {
+    return -1
+  }else if (name1.period === 'Triassic' && name2.period === 'Jurassic') {
+    return -1;
+  }else {
+    return 0
+  }
+}
+
+
+
+
 
 
 
