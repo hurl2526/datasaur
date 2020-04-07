@@ -129,6 +129,17 @@ const isCretaceous = function(dino){
   return dinoCopy.period === 'Cretaceous'
 }
 
+const isntTriassic = function(dino){
+  const dinoCopy = {
+    species: dino.species,
+    period: dino.period,
+    carnivore: dino.carnivore,
+    extinct: dino.extinct,
+  }
+  
+  return dinoCopy.period === 'Cretaceous' || dinoCopy.period === 'Jurassic'
+}
+
 const isFirstAlphabeticallyBySpecies = function (name1, name2) {
   if (name1.species > name2.species) {
     return 1;
@@ -202,7 +213,26 @@ const notExtinct = function(dinos){
   return dinos.filter(noExtinct)
 }
 
+const triassicOnly = function(dinos){
+  return dinos.filter(isTriassic)
+}
 
+const notTriassic = function(dinos){
+  return dinos.filter(isntTriassic)
+}
+const bySpecies = function(dinos){
+  return dinos.slice().sort(isFirstAlphabeticallyBySpecies)
+}
+const byExtinctLast = function(dinos){
+  return dinos.slice().sort(extinctIsLast)
+  
+}
+const byCarnivoresFirst = function(dinos){
+  return dinos.slice().sort(carnivoreIsFirst)
+}
+const  byPeriod = function(dinos){
+  return dinos.slice().sort(isInPeriodOrder)
+}
 
 
 
